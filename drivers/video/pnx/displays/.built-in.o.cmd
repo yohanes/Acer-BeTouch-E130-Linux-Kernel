@@ -1,0 +1,1 @@
+cmd_drivers/video/pnx/displays/built-in.o :=  /opt/arm-2008q1/bin/arm-none-linux-gnueabi-ld -EL    -r -o drivers/video/pnx/displays/built-in.o drivers/video/pnx/displays/lcdfb.o drivers/video/pnx/displays/hx8357.o drivers/video/pnx/displays/tvout.o 

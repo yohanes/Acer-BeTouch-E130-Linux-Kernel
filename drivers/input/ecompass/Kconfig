@@ -1,0 +1,7 @@
+#
+
+config INPUT_ECOMPASS
+	tristate "ECOMPASS"
+	default n
+	help
+	  ECOMPASS

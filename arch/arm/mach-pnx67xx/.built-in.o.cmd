@@ -1,0 +1,1 @@
+cmd_arch/arm/mach-pnx67xx/built-in.o :=  /opt/arm-2008q1/bin/arm-none-linux-gnueabi-ld -EL    -r -o arch/arm/mach-pnx67xx/built-in.o arch/arm/mach-pnx67xx/devices.o arch/arm/mach-pnx67xx/cgu.o arch/arm/mach-pnx67xx/pdcupwr.o arch/arm/mach-pnx67xx/gpio_K3.o arch/arm/mach-pnx67xx/board_pnx67xx_e150x.o 

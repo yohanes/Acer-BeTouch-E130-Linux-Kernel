@@ -1,0 +1,1 @@
+cmd_drivers/usb/gadget/pnx67xx_udc.ko := /opt/arm-2008q1/bin/arm-none-linux-gnueabi-ld -EL -r   --build-id -o drivers/usb/gadget/pnx67xx_udc.ko drivers/usb/gadget/pnx67xx_udc.o drivers/usb/gadget/pnx67xx_udc.mod.o

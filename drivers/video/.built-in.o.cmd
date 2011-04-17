@@ -1,0 +1,1 @@
+cmd_drivers/video/built-in.o :=  /opt/arm-2008q1/bin/arm-none-linux-gnueabi-ld -EL    -r -o drivers/video/built-in.o drivers/video/fb_notify.o drivers/video/fb.o drivers/video/console/built-in.o drivers/video/backlight/built-in.o drivers/video/display/built-in.o drivers/video/cfbfillrect.o drivers/video/cfbcopyarea.o drivers/video/cfbimgblt.o drivers/video/pnx/built-in.o 

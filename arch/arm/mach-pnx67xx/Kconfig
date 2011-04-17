@@ -1,0 +1,153 @@
+comment "PNX67XX Core Type"
+	depends on ARCH_PNX67XX
+
+choice
+	prompt "Choose the PNX67XX Core Type"
+	default ARCH_PNX67XX_V2
+	depends on ARCH_PNX67XX
+	help
+		"Choose the PNX67XX Core Type Version"
+	config ARCH_PNX67XX_V2
+		bool "PNX67XX_V2"
+endchoice
+
+comment "PNX67XX Board Type"
+	depends on ARCH_PNX67XX
+
+choice
+	prompt "Choose the PNX67XX V2 Board type"
+	default MACH_PNX67XX_V2_E150C_2GB
+	depends on ARCH_PNX67XX_V2
+	help
+		"Choose the ST-Ericsson Reference Design Board"
+	config MACH_PNX67XX_V2_WAVEB_2GB
+		bool "PNX67XX V2 WaveB Board with Micron combo"
+	config MACH_PNX67XX_V2_WAVEC_2GB
+		bool "PNX67XX V2 WaveC Board with Micron combo"
+	config MACH_PNX67XX_V2_E150B_2GB
+		bool "PNX67XX V2 E150B Board with 2Gb Micron combo"
+	config MACH_PNX67XX_V2_E150C_2GB
+		bool "PNX67XX V2 E150C Board with 2Gb Micron combo"
+	config MACH_PNX67XX_V2_E150D_2GB
+		bool "PNX67XX V2 E150D Board with 2Gb Micron combo"
+
+endchoice
+
+choice
+	prompt "Choose target Memory Combo"
+	default MEMCOMBO_MT29C2G24MAJJAJC
+	help 
+	  Select which memory combo is to be supported.
+	  Currently, only Micron combos are specified, as supported on
+	  reference design boards (waveB, waveC, waveD).
+	config MEMCOMBO_MT29C2G24MAJJAJC
+		bool "Micron 2Gb Nand / 1Gb DDR"
+	config MEMCOMBO_MT29C2G48MAJAMAKC
+		bool "Micron 2Gb Nand / 2Gb DDR"
+	config MEMCOMBO_K524F2HACMB050
+		bool "Samsung 2Gb Nand / 2Gb DDR"
+endchoice
+
+comment "PNX67XX Specific configuration"
+	depends on ARCH_PNX67XX
+
+config MACHINE_NAME
+	prompt "Machine Name"
+	depends on ARCH_PNX
+	default "STE_PNX67xx_refd"
+	string
+	help
+		Change the machine name for application framework convenience
+		It will be set in board_pnx*.c file
+
+config ANDROID
+	prompt "Android specific for PNX67xx"
+	depends on ARCH_PNX
+	default n
+	bool
+	help
+		Change to activate Android PNX platform specific feature
+		Like specific MTD partitions in board file...
+
+config ANDROID_RECOVERY
+	prompt "Android recovery support"
+	depends on ANDROID
+	default n
+	bool
+	help
+	 Enable MTD partition table with "boot,recovery,misc,cache" 
+	 partitions. If not set old mtd partition is used with
+	 a specific rootfs partition defined
+
+# ACER Bright Lee, 2009/11/11, Remove the setting from here to src/acer_AU*_def.h {
+# config PMEM_POOL_START_ADDR
+	# depends on ARCH_PNX67XX && ANDROID_PMEM
+	# hex "Physical start pool address for pmem "
+	# default 0x22800000
+	# help
+	 # must be page align (4K by default)
+	 # be aware this address must be compatible with your RAM mapping
+	 # this memory pool is used by our PNX video accelarators
+
+# config PMEM_POOL_SIZE
+	# depends on ARCH_PNX67XX && ANDROID_PMEM
+	# hex "pmem pool size in bytes"
+	# default 0x1000000
+	# help
+	 # must by a 4K page multiple, be aware this size (default 16 Mbytes)
+	 # must be compatible with your RAM mapping and multimedia use cases
+# } ACER Bright Lee, 2009/11/11
+
+config DCXO_AFC
+	depends on ARCH_PNX67XX
+	bool "DCXO main clock compatibility feature"
+	help
+	 This flag is used to set the gpio of the DCXO main clock to the right
+	 configuration, otherwise it is not set. RTK must be aligned
+	 (DCXO_AFC_FTR).
+
+config MACH_PNX_REALLOC
+	bool "Modem and Linux Memory mappings compatible with Linux requirements"
+	depends on ARCH_PNX67XX && NKERNEL
+	help
+	 activate memory mapping compatible with Linux requirements
+
+config MODEM_MEM_UNMAP
+	bool "Modem memory area are no more visible from Linux"
+	depends on ARCH_PNX67XX && NKERNEL
+	help
+		Protect modem memory area from Linux kernel
+choice
+	prompt "Choose Max ARM Clock frequency"
+	default ARMCLOCK_468_MHZ_MAX
+	help
+	  Select the maximum frequency of ARM clock to be supported.
+	  If 468Mhz selected, the 4 operating point are 104-234-312-468 Mhz
+  	  If 416Mhz selected, the 4 operating point are 104-208-312-416 Mhz
+  	config ARMCLOCK_468_MHZ_MAX
+		bool "Maximum ARM Clock at 468 Mhz"
+	config ARMCLOCK_416_MHZ_MAX
+		bool "Maximum ARM clock at 416 Mhz"
+endchoice
+
+
+# ACER_Ed for TI BT6450
+config BT_NSHUTDOWN
+   tristate "ENABLE BT_NSHUTDOWN"
+   default M
+   help
+      Enable compilation option for BT6450 chip
+
+#ACER Ed 20100316 for STE BT STLC25XX
+config STE_STLC25XX
+   tristate "ENABLE STE_BT"
+   default M
+   help
+      Enable compilation option for STE BT chip
+
+#ACER Ed 2010-04-14 for wlan power control
+config WLAN_PW
+   tristate "ENABLE WLAN_PW"
+   default M
+   help
+      Enable compilation option for wlan power control 

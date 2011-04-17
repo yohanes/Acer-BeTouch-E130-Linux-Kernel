@@ -1,0 +1,139 @@
+menu "Displays"
+  depends on FB_LCDBUS
+
+config FB_LCDBUS_LCDFB
+	tristate
+	depends on FB_LCDBUS
+	select FB_LCDBUS_LCDCTRL
+	default n
+
+config FB_LCDBUS_JBT6K71
+  tristate "Toshiba JBT6K71-AS(A)"
+  depends on FB_LCDBUS
+  select FB_LCDBUS_LCDFB
+  ---help---
+	Driver for Toshiba's Low-Temperature Poly-Si TFT-LCD 256-Output Source
+	Driver. Supports 262k colours and QVGA (240x320) resolution.
+	(See JBT6K71-AS(A) Specification Rev. 1.42/2006-02-07 for feature list)
+
+config FB_LCDBUS_JBT6K71_KERNEL_SPLASH_SCREEN
+  bool "JBT6K71 Kernel Splash Screen"
+  depends on FB_LCDBUS_JBT6K71 && FB_LCDBUS_PAGEFAULT_KERNEL_SPLASH_SCREEN
+  ---help---
+	Enable the LCD splash screen (could be an animated splash screen).
+
+config FB_LCDBUS_ILI9325
+  tristate "ILI9325 - CT028TN05 V2 (Peak-T1) MCU 8080 16 bit"
+  depends on FB_LCDBUS
+  select FB_LCDBUS_LCDFB
+  ---help---
+       Driver for Innolux's TFT-LCD wqVGA
+
+config FB_LCDBUS_ILI9325_KERNEL_SPLASH_SCREEN
+  bool "ILI9325 Kernel Splash Screen"
+  depends on FB_LCDBUS_ILI9325 && FB_LCDBUS_PAGEFAULT_KERNEL_SPLASH_SCREEN
+  ---help---
+       Enable the LCD splash screen (could be an animated splash screen).
+
+
+config FB_LCDBUS_ILI9325_OSD
+  bool "OSD support"
+  depends on FB_LCDBUS_ILI9325
+  ---help---
+    This enables both On-Screen Displays (OSD) of the Innolux display.
+    Two addional framebuffer devices will be present that can be used to display
+    data one both OSD displays.
+
+config FB_LCDBUS_ILI9325_HIGHSPEED_RAMWRITE
+  bool "Highspeed ram-write support"
+  depends on FB_LCDBUS_ILI9325
+  ---help---
+    This enables highspeed ram-write support of the display. This feature will
+    not always improve the performance.
+
+config FB_LCDBUS_HX8357
+  tristate "HX8357-A01_T_DS_v03_090313  MCU 8080 9 bit"
+  depends on FB_LCDBUS
+  select FB_LCDBUS_LCDFB
+  ---help---
+	Driver for Himax's TFT-LCD wqVGA
+
+config FB_LCDBUS_HX8357_KERNEL_SPLASH_SCREEN
+  bool "HX8357 Kernel Splash Screen"
+  depends on FB_LCDBUS_HX8357 && FB_LCDBUS_PAGEFAULT_KERNEL_SPLASH_SCREEN
+  ---help---
+	Enable the LCD splash screen (could be an animated splash screen).
+
+
+config FB_LCDBUS_HX8357_OSD
+  bool "OSD support"
+  depends on FB_LCDBUS_HX8357
+  ---help---
+    This enables both On-Screen Displays (OSD) of the Himax display.
+    Two addional framebuffer devices will be present that can be used to display
+    data one both OSD displays.
+
+config FB_LCDBUS_HX8357_HIGHSPEED_RAMWRITE
+  bool "Highspeed ram-write support"
+  depends on FB_LCDBUS_HX8357
+  ---help---
+    This enables highspeed ram-write support of the display. This feature will
+    not always improve the performance.
+
+config FB_LCDBUS_LC822973
+  tristate "Sanyo LC822973 TV OUT"
+  depends on FB_LCDBUS
+  select FB_LCDBUS_LCDFB
+  ---help---
+	Driver for Sanyo LC822973 TV OUT IC.
+	See LC822973 Technical Data Ver. 0.96 (2006.04.20) for feature list.
+
+
+config FB_LCDBUS_LC822973_KERNEL_SPLASH_SCREEN
+  bool "LC822973 Kernel Splash Screen"
+  depends on FB_LCDBUS_LC822973 && FB_LCDBUS_PAGEFAULT_KERNEL_SPLASH_SCREEN
+  ---help---
+	Enable the TV out splash screen (could be an animated splash screen).
+
+config FB_LCDBUS_TVOUT
+  tristate "PNX TVOUT (C065 LE)"
+  depends on FB_LCDBUS
+  select FB_LCDBUS_LCDFB
+  ---help---
+	Driver for PNX TVOUT IP (C065 LE)
+
+config FB_LCDBUS_TVOUT_KERNEL_SPLASH_SCREEN
+  bool "PNX TVOUT Kernel Splash Screen"
+  depends on FB_LCDBUS_TVOUT && FB_LCDBUS_PAGEFAULT_KERNEL_SPLASH_SCREEN
+  ---help---
+	Enable the TV out splash screen (could be an animated splash screen).
+
+config FB_LCDBUS_L5F30906
+  tristate "Samsung (EPSON L5F30906 WQVGA LCD)"
+  depends on FB_LCDBUS
+  select FB_LCDBUS_LCDFB
+  ---help---
+	Driver for Samsung (EPSON L5F30906) WQVGA Mobile display driver IC.
+	See L5F30906 Technical Doc (L5F30906P01(0226)_WQVGA.pdf) for feature list.	
+
+config FB_LCDBUS_L5F30906_KERNEL_SPLASH_SCREEN
+  bool "FB_LCDBUS_L5F30906 Kernel Splash Screen"
+  depends on FB_LCDBUS_L5F30906 && FB_LCDBUS_PAGEFAULT_KERNEL_SPLASH_SCREEN
+  ---help---
+	Enable the LCD splash screen (could be an animated splash screen).
+
+config FB_LCDBUS_ILI9481BB
+  tristate "Ilitek ILI9481BB HVGA LCD"
+  depends on FB_LCDBUS
+  select FB_LCDBUS_LCDFB
+  ---help---
+	Driver for ILITEK ILI9481BB HVGA Mobile display driver IC.
+	See ILI9481BB Technical Doc (ILI9481B_DS_V0 1.pdf) for feature list.	
+
+config FB_LCDBUS_ILI9481BB_KERNEL_SPLASH_SCREEN
+  bool "FB_LCDBUS_ILI9481BB Kernel Splash Screen"
+  depends on FB_LCDBUS_ILI9481BB && FB_LCDBUS_PAGEFAULT_KERNEL_SPLASH_SCREEN
+  ---help---
+	Enable the LCD splash screen (could be an animated splash screen).
+
+endmenu

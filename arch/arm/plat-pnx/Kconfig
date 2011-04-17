@@ -1,0 +1,78 @@
+if ARCH_PNX
+
+menu "STE PNX Implementations"
+
+choice
+	prompt "PNX System Type"
+	default ARCH_PNX67XX
+
+config ARCH_PNX67XX
+	bool "STE PNX67XX"
+	select CPU_ARM926T
+	select PNX_CLOCKEVENTS
+endchoice
+
+comment "STE Feature Selections"
+
+config BOOTTIME
+	bool "Linux Boot Time monitoring char device"
+		depends on NKERNEL
+		default y
+
+config DEBUG_BOOTTIME
+	bool "Linux Boot Time debug mode"
+		depends on BOOTTIME
+		default y
+
+
+config DBG_RAMDUMP
+	bool "Platform Ramdump debug feature"
+	depends on NKERNEL
+	default y
+	help
+		Activate the platform Ramdump feature.
+		It allows to extract physical memory content
+		for postmortem analysis
+
+config DBG_XOSTRACE
+	bool "ProcFS interface for Modem traces"
+	depends on NKERNEL
+	default y
+	help
+		Activate Modem Traces feature.
+		It allows to extract SpyTracer and Applicative
+		traces from Modem
+
+config TEST_KERNEL_PANIC
+	bool "SysFS interface for kernel panic generation"
+	depends on DBG_RAMDUMP
+	default n
+	help
+		Useful to generate some kernel panic to test
+		Ramdump feature for Linux
+
+config MODEM_BLACK_BOX
+	bool "Modem HW configuration on Linux side"
+	depends on NKERNEL
+	default y
+	help
+		Modem HW configuration located in
+		board configuration file.
+
+config EBI_BUS
+	bool "EBI bus configuration on Linux side"
+	depends on MODEM_BLACK_BOX
+	default n
+	help
+		EBI bus configuration located in
+		board configuration file.
+
+endmenu
+
+menu "PNX power management"
+
+source "arch/arm/plat-pnx/Kconfig.power"
+
+endmenu
+
+endif

@@ -1,0 +1,3 @@
+kernel/drivers/power/drvchg.ko
+kernel/drivers/power/battmon.ko
+kernel/drivers/power/pnx_battery.ko

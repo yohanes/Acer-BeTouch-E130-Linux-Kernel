@@ -1,0 +1,2 @@
+kernel/drivers/hid/hid-dummy.ko
+kernel/drivers/hid/usbhid/usbhid.ko

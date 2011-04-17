@@ -1,0 +1,1 @@
+cmd_arch/arm/nkernel/vmon.o := /opt/arm-2008q1/bin/arm-none-linux-gnueabi-ld -EL    -r -o arch/arm/nkernel/vmon.o arch/arm/nkernel/vmon_kthread.o arch/arm/nkernel/vmon_pipe.o arch/arm/nkernel/vmon_fifo.o 

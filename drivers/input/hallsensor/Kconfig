@@ -1,0 +1,6 @@
+
+config HALL_SENSOR
+	tristate "HALL_SENSOR"
+	help
+	  HALL_SENSOR
+

@@ -1,0 +1,1 @@
+cmd_fs/9p/9p.o := /opt/arm-2008q1/bin/arm-none-linux-gnueabi-ld -EL    -r -o fs/9p/9p.o fs/9p/vfs_super.o fs/9p/vfs_inode.o fs/9p/vfs_addr.o fs/9p/vfs_file.o fs/9p/vfs_dir.o fs/9p/vfs_dentry.o fs/9p/v9fs.o fs/9p/fid.o 

@@ -1,0 +1,17 @@
+menu "Busses"
+  depends on FB_LCDBUS
+
+config FB_LCDBUS_LCDCTRL
+	tristate
+	depends on FB_LCDBUS
+	default n
+
+config FB_LCDBUS_VDE
+  tristate "Video Display Engine (VDE)"
+  depends on FB_LCDBUS
+  select FB_LCDBUS_LCDCTRL
+  ---help---
+    Video Display Engine (VDE) driver for the PNX baseband.
+
+endmenu
+

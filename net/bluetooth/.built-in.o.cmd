@@ -1,0 +1,1 @@
+cmd_net/bluetooth/built-in.o :=  /opt/arm-2008q1/bin/arm-none-linux-gnueabi-ld -EL    -r -o net/bluetooth/built-in.o net/bluetooth/bluetooth.o net/bluetooth/l2cap.o net/bluetooth/sco.o net/bluetooth/rfcomm/built-in.o 

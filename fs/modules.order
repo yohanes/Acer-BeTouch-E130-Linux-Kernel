@@ -1,0 +1,3 @@
+kernel/fs/mbcache.ko
+kernel/fs/ext3/ext3.ko
+kernel/fs/jbd/jbd.ko

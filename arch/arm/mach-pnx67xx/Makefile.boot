@@ -1,0 +1,9 @@
+ifeq ($(CONFIG_MACH_PNX_REALLOC),y)
+  zreladdr-$(CONFIG_ARCH_PNX67XX)	:= 0xC0008000
+  ztextaddr-$(CONFIG_ARCH_PNX67XX)	:= 0xC0508000
+  params_phys-$(CONFIG_ARCH_PNX67XX)	:= 0xC03FFC00
+else
+  zreladdr-$(CONFIG_ARCH_PNX67XX)	:= 0x20008000
+  ztextaddr-$(CONFIG_ARCH_PNX67XX)	:= 0x20508000
+  params_phys-$(CONFIG_ARCH_PNX67XX)	:= 0x203FFC00
+endif

@@ -1,0 +1,1 @@
+cmd_drivers/video/pnx/busses/built-in.o :=  /opt/arm-2008q1/bin/arm-none-linux-gnueabi-ld -EL    -r -o drivers/video/pnx/busses/built-in.o drivers/video/pnx/busses/lcdctrl.o drivers/video/pnx/busses/vde.o 

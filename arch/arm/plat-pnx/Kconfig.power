@@ -1,0 +1,45 @@
+
+config PNX_POWER_SYSFS
+	bool
+	default n
+
+config PNX_POWER_TRACE
+	bool "Activate power saving trace"
+	default n
+
+config PNX_TIMER_TUNE
+	bool "Enable dynamic clock tuning"
+	default n
+
+config PNX_MTU_TIMER
+	bool
+	default n
+
+config PNX_SCTU_TIMER
+	bool
+	default n
+
+config PNX_RTKE_TIMER
+	bool
+	default n
+
+config POWER_TIMER_BAGGY
+	bool "Enable Baggy timer feature"
+	default n
+
+config PNX_CLOCKEVENTS
+	bool
+	select GENERIC_TIME
+	select GENERIC_CLOCKEVENTS
+	select PNX_POWER_SYSFS
+	select PNX_MTU_TIMER
+#	select PNX_SCTU_TIMER
+	select PNX_RTKE_TIMER if (NKERNEL)
+#	select POWER_TIMER_BAGGY
+	default n
+
+config PNX_OLDTICK
+	bool
+	default n
+
+

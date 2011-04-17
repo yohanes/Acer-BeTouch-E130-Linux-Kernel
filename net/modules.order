@@ -1,0 +1,11 @@
+kernel/net/netfilter/nf_conntrack.ko
+kernel/net/netfilter/x_tables.ko
+kernel/net/netfilter/xt_tcpudp.ko
+kernel/net/netfilter/xt_multiport.ko
+kernel/net/ipv4/netfilter/nf_conntrack_ipv4.ko
+kernel/net/ipv4/netfilter/nf_nat.ko
+kernel/net/ipv4/netfilter/nf_defrag_ipv4.ko
+kernel/net/ipv4/netfilter/ip_tables.ko
+kernel/net/ipv4/netfilter/iptable_filter.ko
+kernel/net/ipv4/netfilter/iptable_nat.ko
+kernel/net/ipv4/netfilter/ipt_MASQUERADE.ko

@@ -1,0 +1,57 @@
+menuconfig FB_LCDBUS
+	bool "LCDBUS support"
+	depends on FB && ARM && ARCH_PNX
+	---help---
+	  Support for LCD busses and connected displays.
+
+config FB_LCDBUS_LOGIC_PAGEFAULT
+	bool "Framebuffer Pagefault Logic"
+	depends on FB_LCDBUS
+	default y
+	select FB_LCDBUS_LCDFB
+	select FB_CFB_FILLRECT
+	select FB_CFB_COPYAREA
+	select FB_CFB_IMAGEBLIT
+	---help---
+		When a user writes in the "mmaped" framebuffer memory, the
+		pagefault logic starts a timer (linked to the parameter "fps",).
+		When this timer expired, the refresh thread is waked up, and a full
+		LCD screen update is performed. The refresh thread will do several
+		(frames_before_trying_to_sleep) full LCD refresh at "fps" speed, before
+		re-invalidated the pages with the zap_page_range function for a future
+		wake up with pagefault detections.
+
+config FB_LCDBUS_PAGEFAULT_KERNEL_SPLASH_SCREEN
+	bool "Enable Kernel Splash Screen feature for all framebuffers"
+	depends on FB_LCDBUS_LOGIC_PAGEFAULT
+	default n
+	---help---
+		Say Y to enable the kernel splash screen feature for all framebuffers.
+
+source "drivers/video/pnx/busses/Kconfig"
+source "drivers/video/pnx/displays/Kconfig"
+
+config FB_LCDBUS_DEBUG
+	bool "Enable debugging"
+	depends on FB_LCDBUS
+	---help---
+		Say Y here to enable debug messages for the bus and display drivers.
+
+
+comment "HWMEM Allocator configuration"
+	depends on ARCH_PNX
+
+choice
+	prompt "Choose HWMEM alloctor configuration"
+	default HWMEM_QVGA
+	config HWMEM_QVGA
+		bool "QVGA configuration"
+		help
+			Should be selected when using QVGA screen.
+
+	config HWMEM_WQVGA
+		bool "WQVGA configuration"
+		help
+			Should be selected when using WQVGA (Wide QVGA) screen.
+
+endchoice

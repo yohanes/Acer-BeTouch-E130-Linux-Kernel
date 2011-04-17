@@ -1,0 +1,1 @@
+cmd_crypto/built-in.o :=  /opt/arm-2008q1/bin/arm-none-linux-gnueabi-ld -EL    -r -o crypto/built-in.o crypto/crypto.o crypto/crypto_algapi.o crypto/crypto_blkcipher.o crypto/chainiv.o crypto/eseqiv.o crypto/rng.o crypto/krng.o 
