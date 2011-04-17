@@ -1,0 +1,13 @@
+Modified kernel source code for Acer BeTouch E130. 
+
+The kernel file from Acer lacks some #defines and doesn't contain
+proper config file. I wanted to have ext3 support for debian chroot,
+and I found out that there is a problem in the SDCard driver almost
+everytime when I do apt-get install.
+
+The modifications that I made so far are:
+
+- created a config file that matches almost exactly with the old kernel symbol table (/proc/kallsyms)
+- changed some values to match the dmesg in the original kernel
+- added some #defines (TODO: should be merged to single .h file)
+- changed pnxmci so that it wont do scatter gather, and use software based bounce buffer instead
